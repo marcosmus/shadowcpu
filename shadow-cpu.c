@@ -21,7 +21,7 @@
  *   2016-02-04: v3.1 algo_gate implemntation
  */
 
-#include <cpuminer-config.h>
+#include <shadowcpu-config.h>
 #define _GNU_SOURCE
 
 #include <stdio.h>
@@ -3099,7 +3099,7 @@ int main(int argc, char *argv[])
 
 //#ifdef HAVE_SYSLOG_H
 //	if (use_syslog)
-//		openlog("cpuminer", LOG_PID, LOG_USER);
+//		openlog("shadowcpu", LOG_PID, LOG_USER);
 //#endif
 
 	work_restart = (struct work_restart*) calloc(opt_n_threads, sizeof(*work_restart));
