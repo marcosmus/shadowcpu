@@ -15,7 +15,7 @@ bin_PROGRAMS	= shadowcpu
 
 dist_man_MANS	= shadowcpu.1
 
-shadowcpu_SOURCES = \
+cpuminer_SOURCES = \
   cpu-miner.c \
   util.c \
   uint256.cpp \
@@ -147,44 +147,44 @@ shadowcpu_SOURCES = \
 disable_flags =
 
 if USE_ASM
-   shadowcpu_SOURCES += asm/neoscrypt_asm.S
+   cpuminer_SOURCES += asm/neoscrypt_asm.S
 if ARCH_x86
-   shadowcpu_SOURCES += asm/sha2-x86.S asm/scrypt-x86.S asm/aesb-x86.S
+   cpuminer_SOURCES += asm/sha2-x86.S asm/scrypt-x86.S asm/aesb-x86.S
 endif
 if ARCH_x86_64
-   shadowcpu_SOURCES += asm/sha2-x64.S asm/scrypt-x64.S asm/aesb-x64.S
+   cpuminer_SOURCES += asm/sha2-x64.S asm/scrypt-x64.S asm/aesb-x64.S
 endif
 if ARCH_ARM
-   shadowcpu_SOURCES += asm/sha2-arm.S asm/scrypt-arm.S
+   cpuminer_SOURCES += asm/sha2-arm.S asm/scrypt-arm.S
 endif
 else
    disable_flags += -DNOASM
 endif
 
 if HAVE_WINDOWS
-   shadowcpu_SOURCES += compat/winansi.c
+   cpuminer_SOURCES += compat/winansi.c
 endif
 
-shadowcpu_LDFLAGS	= @LDFLAGS@
-shadowcpu_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@ -lssl -lcrypto -lgmp
-shadowcpu_CPPFLAGS = @LIBCURL_CPPFLAGS@ $(ALL_INCLUDES)
-shadowcpu_CFLAGS   = -Wno-pointer-sign -Wno-pointer-to-int-cast $(disable_flags)
+cpuminer_LDFLAGS	= @LDFLAGS@
+cpuminer_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@ -lssl -lcrypto -lgmp
+cpuminer_CPPFLAGS = @LIBCURL_CPPFLAGS@ $(ALL_INCLUDES)
+cpuminer_CFLAGS   = -Wno-pointer-sign -Wno-pointer-to-int-cast $(disable_flags)
 
 if HAVE_WINDOWS
-shadowcpu_CFLAGS += -Wl,--stack,10485760
+cpuminer_CFLAGS += -Wl,--stack,10485760
 endif
 
 if HAVE_WINDOWS
 # use to profile an object
 # gprof_cflags = -pg -g3
-# shadowcpu_LDFLAGS += -pg
-# shadowcpu_CFLAGS += -fno-inline-functions -static
+# cpuminer_LDFLAGS += -pg
+# cpuminer_CFLAGS += -fno-inline-functions -static
 
 # copy/paste from generated Makefile
-common_ccflags = $(DEFS) $(ALL_INCLUDES) $(shadowcpu_CPPFLAGS) $(CPPFLAGS) $(shadowcpu_CFLAGS) $(CFLAGS)
+common_ccflags = $(DEFS) $(ALL_INCLUDES) $(cpuminer_CPPFLAGS) $(CPPFLAGS) $(cpuminer_CFLAGS) $(CFLAGS)
 
 # special CFLAGS (if you find a simpler way to do that tell me ;)
-shadowcpu-neoscrypt.o: neoscrypt.c
+cpuminer-neoscrypt.o: neoscrypt.c
 	@echo "CUSTOM ${@}: ${filter %.o,${^}} ${filter %.c,${^}}"
 	$(CC) $(common_ccflags) -g -O3 $(gprof_cflags) -MT $@ -MD -MP -c -o $@ $<
 
