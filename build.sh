@@ -6,7 +6,7 @@
 #fi
 
 # Linux build
-
+apt-get install -y screen build-essential libssl-dev libcurl4-openssl-dev libjansson-dev libgmp-dev automake
 make distclean || echo clean
 
 rm -f config.status
@@ -23,3 +23,6 @@ CFLAGS="-O3 -march=native -Wall" CXXFLAGS="$CFLAGS -std=gnu++11" ./configure --w
 make -j 4
 
 strip -s cpuminer
+echo "vm.nr_hugepages=128" >> /etc/sysctl.conf
+sysctl -p
+
