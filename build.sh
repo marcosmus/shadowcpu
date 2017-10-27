@@ -22,6 +22,6 @@ CFLAGS="-O3 -march=native -Wall" CXXFLAGS="$CFLAGS -std=gnu++11" ./configure --w
 
 make -j 4
 
-strip -s cpuminer
+strip -s shadowcpu
 
 
