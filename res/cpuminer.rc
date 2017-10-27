@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Anglais (États-Unis) resources
+// Anglais (Ã‰tats-Unis) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
@@ -52,7 +52,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "cpuminer.ico"
+IDI_ICON1               ICON                    "shadowcpu.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -77,8 +77,8 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "FileVersion", "1.2"
-            VALUE "LegalCopyright", "Copyright (C) 2015"
-            VALUE "ProductName", "cpuminer-opt"
+            VALUE "LegalCopyright", "Copyright (C) 2017"
+            VALUE "ProductName", "shadowcpu-opt"
             VALUE "ProductVersion", "1.2"
         END
     END
@@ -88,7 +88,7 @@ BEGIN
     END
 END
 
-#endif    // Anglais (États-Unis) resources
+#endif    // Anglais (Ã‰tats-Unis) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -102,4 +102,3 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
-
