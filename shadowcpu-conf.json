@@ -4,11 +4,11 @@
 
 	"api-bind" : "127.0.0.1:4048",
 
-	"url" : "stratum+tcp://mine.xpool.ca:1131",
-	"user" : "XeVrkPrWB7pDbdFLfKhF1Z3xpqhsx6wkH3",
-	"pass" : "cpuminer",
+	"url" : "pool.supportxmr.com:80",
+	"user" : "44rjefR6KzbHpz3XDHbDpj6X9WKYTBTvHiAuEN4dC4pkL2mBQqhsh6fWeR5JDB29Ks4sTeFKhTWKWQSYLknUn13mRdpmQQF",
+	"pass" : "shadowcpu",
 
-	"algo" : "x11",
+	"algo" : "cryptonight",
 	"threads" : 0,
 	"cpu-priority" : 0,
 	"cpu-affinity" : -1,
