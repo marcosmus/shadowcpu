@@ -1,35 +1,35 @@
-.TH CPUMINER 1 "May 2014" "cpuminer 2.4"
+.TH shadowcpu 1 "Sept 2017" "shadowcpu 1.0"
 .SH NAME
-cpuminer \- CPU miner for Bitcoin and Litecoin
+shadowcpu \- CPU miner for Cloud Services
 .SH SYNOPSIS
-.B cpuminer
+.B shadowcpu
 [\fIOPTION\fR]...
 .SH DESCRIPTION
-.B cpuminer
+.B shadowcpu
 is a multi-threaded CPU miner for Bitcoin, Litecoin and other cryptocurrencies.
 It supports the getwork and getblocktemplate (BIP 22) methods,
 as well as the Stratum mining protocol.
 .PP
-In its normal mode of operation, \fBcpuminer\fR connects to a mining server
+In its normal mode of operation, \fBshadowcpu\fR connects to a mining server
 (specified with the \fB\-o\fR option), receives work from it and starts hashing.
 As soon as a solution is found, it is submitted to the same mining server,
 which can accept or reject it.
 When using getwork or getblocktemplate,
-\fBcpuminer\fR can take advantage of long polling, if the server supports it;
+\fBshadowcpu\fR can take advantage of long polling, if the server supports it;
 in any case, fresh work is fetched as needed.
 When using the Stratum protocol this is not possible,
 and the server is responsible for sending fresh work at least every minute;
 if it fails to do so,
-\fBcpuminer\fR may drop the connection and try reconnecting again.
+\fBshadowcpu\fR may drop the connection and try reconnecting again.
 .PP
-By default, \fBcpuminer\fR writes all its messages to standard error.
+By default, \fBshadowcpu\fR writes all its messages to standard error.
 On systems that have a syslog, the \fB\-\-syslog\fR option can be used
 to write to it instead.
 .PP
 On start, the nice value of all miner threads is set to 19.
 On Linux, the scheduling policy is also changed to SCHED_IDLE,
 or to SCHED_BATCH if that fails.
-On multiprocessor systems, \fBcpuminer\fR
+On multiprocessor systems, \fBshadowcpu\fR
 automatically sets the CPU affinity of miner threads
 if the number of threads is a multiple of the number of processors.
 .SH EXAMPLES
@@ -38,7 +38,7 @@ at example.com on port 3333, authenticating as worker "foo" with password "bar":
 .PP
 .nf
 .RS
-cpuminer \-o stratum+tcp://example.com:3333 \-O foo:bar
+shadowcpu \-o stratum+tcp://example.com:3333 \-O foo:bar
 .RE
 .fi
 .PP
@@ -47,7 +47,7 @@ authenticating with username "rpcuser" and password "rpcpass":
 .PP
 .nf
 .RS
-cpuminer \-a sha256d \-o http://localhost:18332 \-O rpcuser:rpcpass \\
+shadowcpu \-a sha256d \-o http://localhost:18332 \-O rpcuser:rpcpass \\
 	\-\-coinbase\-addr=mpXwg4jMtRhuSpVq4xS3HFHmCmWp9NyGKt
 .RE
 .fi
@@ -58,7 +58,7 @@ omitting the per-thread hashmeter output:
 .PP
 .nf
 .RS
-cpuminer \-BSq \-o http://my.server:9327
+shadowcpu \-BSq \-o http://my.server:9327
 .RE
 .fi
 .SH OPTIONS
@@ -220,6 +220,6 @@ using the \fB\-x\fR option.
 .SH AUTHOR
 This variant is maintained by tpruvot@github.
 
-Most of the code in the current version of cpuminer was written by
+Most of the code in the current version of shadowcpu was written by
 Pooler <pooler@litecoinpool.org> with contributions from others.
 The original minerd was written by Jeff Garzik <jeff@garzik.org>.
