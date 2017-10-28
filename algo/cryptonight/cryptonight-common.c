@@ -4,7 +4,7 @@
 
 // Modified for CPUminer by Lucas Jones
 
-#include "cpuminer-config.h"
+#include "shadowcpu-config.h"
 //#include "miner.h"
 #include "algo-gate-api.h"
 
