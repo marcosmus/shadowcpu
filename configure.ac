@@ -1,9 +1,9 @@
-AC_INIT([cpuminer-opt], [3.7.0])
+AC_INIT([shadowcpu-opt], [3.7.0])
 
 AC_PREREQ([2.59c])
 AC_CANONICAL_SYSTEM
-AC_CONFIG_SRCDIR([cpu-miner.c])
-AC_CONFIG_HEADERS([cpuminer-config.h])
+AC_CONFIG_SRCDIR([shadow-cpu.c])
+AC_CONFIG_HEADERS([shadowcpu-config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([foreign subdir-objects])
