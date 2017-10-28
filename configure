@@ -582,7 +582,7 @@ PACKAGE_STRING='shadowcpu-opt 3.7.0'
 PACKAGE_BUGREPORT=''
 PACKAGE_URL=''
 
-ac_unique_file="cpu-miner.c"
+ac_unique_file="shadow-cpu.c"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>
