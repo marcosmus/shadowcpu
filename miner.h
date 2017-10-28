@@ -1,7 +1,7 @@
 #ifndef __MINER_H__
 #define __MINER_H__
 
-#include <shaowcpu-config.h>
+#include <shadowcpu-config.h>
 
 #define USER_AGENT PACKAGE_NAME "/" PACKAGE_VERSION
 #define MAX_CPUS 16
