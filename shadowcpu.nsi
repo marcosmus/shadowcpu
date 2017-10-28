@@ -19,12 +19,12 @@ AllowRootDirInstall true
 !define MINER_VERSION "1.1"
 !define VERSION "${MINER_VERSION}.0.0"
 
-BrandingText "CPU Miner Install System"
+BrandingText "shadowcpu installer"
 
-!define PROGRAM_NAME "CPU Miner"
-!define PROGRAM_KEY  "cpuminer"
+!define PROGRAM_NAME "shadowcpu"
+!define PROGRAM_KEY  "shadowcpu"
 
-Name "cpuminer-multi v${MINER_VERSION}"
+Name "shadowcpui v${MINER_VERSION}"
 OutFile "${PROGRAM_KEY}-setup.exe"
 Icon "res\setup.ico"
 ; Icon "res\${PROGRAM_KEY}.ico"
@@ -45,11 +45,11 @@ VIAddVersionKey OriginalFilename "${PROGRAM_KEY}.exe"
 !define NSIS_MAKENSIS64
 !ifdef NSIS_MAKENSIS64
   !define BITS 64
-  InstallDir $PROGRAMFILES64\cpuminer-multi
+  InstallDir $PROGRAMFILES64\shadowcpu-multi
   !define RK_UNINSTALL "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROGRAM_KEY}"
 !else
   !define BITS 32
-  InstallDir $PROGRAMFILES32\cpuminer-multi
+  InstallDir $PROGRAMFILES32\shadowcpu-multi
   !define RK_UNINSTALL "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PROGRAM_KEY}"
   ;!define RK_UNINSTALL "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\${PROGRAM_KEY}"
 !endif
@@ -225,7 +225,7 @@ Function .onGUIInit
   SetCtlColors $_6_ /BRANDING ""
   GetDlgItem $_5_ $HWNDPARENT 1256
   SetCtlColors $_5_ /BRANDING ""
-  SendMessage $_5_ ${WM_SETTEXT} 0 "STR:$(LSTR_0) "    ;  "CPU Miner Install System"
+  SendMessage $_5_ ${WM_SETTEXT} 0 "STR:$(LSTR_0) "    ;  "shadowcpu Install System"
 ; GetDlgItem $_7_ $HWNDPARENT 1035
 ; GetDlgItem $_8_ $HWNDPARENT 1045
 ; GetDlgItem $_9_ $HWNDPARENT 1
@@ -264,9 +264,9 @@ Section
   Return
 
   SetOverwrite on
-  File cpuminer-gw64.exe
-  File cpuminer-x64.exe
-  File cpuminer-conf.json
+  File shadowcpu-gw64.exe
+  File shadowcpu-x64.exe
+  File shadowcpu-conf.json
   File /oname=LICENSE.txt LICENSE
   File /oname=README.txt README.md
 
@@ -276,15 +276,15 @@ Section
 
   # Create the uninstaller
   CreateDirectory "$DATADIR"
-  File "/oname=$DATADIR\cpuminer-conf.json" cpuminer-conf.json
-  WriteUninstaller "$DATADIR\cpuminer-uninst.exe"
+  File "/oname=$DATADIR\shadowcpu-conf.json" shadowcpu-conf.json
+  WriteUninstaller "$DATADIR\shadowcpu-uninst.exe"
 
   # Shortcuts (program + uninstaller)
   CreateDirectory "$SMPROGRAMS\${PROGRAM_NAME}"
-  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\${PROGRAM_NAME}.lnk" "$REALINSTDIR\cpuminer-gw64.exe"
-  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\Config.lnk" "$SYSDIR\notepad.exe" "$DATADIR\cpuminer-conf.json"
-  CreateShortCut "$SMPROGRAMS\${PROGRAM_NAME}\Uninstall.lnk" "$DATADIR\cpuminer-uninst.exe"
-  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\${PROGRAM_NAME}-bg.lnk" "$REALINSTDIR\cpuminer-gw64.exe" "-q -B" "" "" SW_SHOWMINIMIZED
+  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\${PROGRAM_NAME}.lnk" "$REALINSTDIR\shadowcpu-gw64.exe"
+  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\Config.lnk" "$SYSDIR\notepad.exe" "$DATADIR\shadowcpu-conf.json"
+  CreateShortCut "$SMPROGRAMS\${PROGRAM_NAME}\Uninstall.lnk" "$DATADIR\shadowcpu-uninst.exe"
+  CreateShortCut /NoWorkingDir "$SMPROGRAMS\${PROGRAM_NAME}\${PROGRAM_NAME}-bg.lnk" "$REALINSTDIR\shadowcpu-gw64.exe" "-q -B" "" "" SW_SHOWMINIMIZED
 
   WriteRegStr HKLM ${RK_UNINSTALL} \
     "DisplayName" "${PROGRAM_NAME}"
@@ -296,22 +296,22 @@ Section
     "Publisher" "Open Source"
 
   WriteRegStr HKLM ${RK_UNINSTALL} \
-    "DisplayIcon" "$REALINSTDIR\cpuminer-x64.exe"
+    "DisplayIcon" "$REALINSTDIR\shadowcpu-x64.exe"
 
   WriteRegStr HKLM ${RK_UNINSTALL} \
     "InstallLocation" "$REALINSTDIR"
 
   WriteRegStr HKLM ${RK_UNINSTALL} \
-    "UninstallString" "$\"$DATADIR\cpuminer-uninst.exe$\""
+    "UninstallString" "$\"$DATADIR\shadowcpu-uninst.exe$\""
 
-  ${GetSize} "$INSTDIR" "/M=cpuminer* /S=0K /G=0" $0 $1 $2
+  ${GetSize} "$INSTDIR" "/M=shadowcpu* /S=0K /G=0" $0 $1 $2
   IntFmt $0 "0x%08X" $0
   WriteRegDWORD HKLM "${RK_UNINSTALL}" \
     "EstimatedSize" "$0"
 
   # Add application to Windows Firewall exception list (to check)
-  ;liteFirewall::AddRule "$REALINSTDIR\cpuminer-gw64.exe" "CPU Miner (MinGW64)"
-  ;liteFirewall::AddRule "$REALINSTDIR\cpuminer-x64.exe" "CPU Miner (x64)"
+  ;liteFirewall::AddRule "$REALINSTDIR\shadowcpu-gw64.exe" "CPU Miner (MinGW64)"
+  ;liteFirewall::AddRule "$REALINSTDIR\shadowcpu-x64.exe" "CPU Miner (x64)"
 
 SectionEnd
 
@@ -331,9 +331,9 @@ Section "uninstall"
   ReadRegStr $INSTDIR HKLM ${RK_UNINSTALL} "InstallLocation"
   StrCpy $REALINSTDIR "$INSTDIR"
 
-  Delete "$INSTDIR\cpuminer-conf.json"
-  Delete "$INSTDIR\cpuminer-gw64.exe"
-  Delete "$INSTDIR\cpuminer-x64.exe"
+  Delete "$INSTDIR\shadowcpu-conf.json"
+  Delete "$INSTDIR\shadowcpu-gw64.exe"
+  Delete "$INSTDIR\shadowcpu-x64.exe"
   Delete "$INSTDIR\LICENSE.txt"
   Delete "$INSTDIR\README.txt"
 
@@ -341,10 +341,10 @@ Section "uninstall"
   Delete "$INSTDIR\msvcr120.dll"
   RMDir "$INSTDIR"
 
-  Delete "$DATADIR\cpuminer-uninst.exe"
+  Delete "$DATADIR\shadowcpu-uninst.exe"
   RMDir "$DATADIR"
 
-  ; Delete "$DATADIR\cpuminer-conf.json"
+  ; Delete "$DATADIR\shadowcpu-conf.json"
   ; RMDir "$DATADIR"
 
   # second, remove the link from the start menu
@@ -357,7 +357,7 @@ Section "uninstall"
   DeleteRegKey HKLM ${RK_UNINSTALL}
 
   # Remove application from Windows Firewall exception list
-  ;liteFirewall::RemoveRule "$REALINSTDIR\cpuminer-gw64.exe" "CPU Miner (MinGW64)"
-  ;liteFirewall::RemoveRule "$REALINSTDIR\cpuminer-x64.exe" "CPU Miner (x64)"
+  ;liteFirewall::RemoveRule "$REALINSTDIR\shadowcpu-gw64.exe" "shadowcpu (MinGW64)"
+  ;liteFirewall::RemoveRule "$REALINSTDIR\shadowcpu-x64.exe" "shadowcpu (x64)"
 
 SectionEnd
