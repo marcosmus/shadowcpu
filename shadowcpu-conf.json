@@ -5,7 +5,7 @@
 	"api-bind" : "127.0.0.1:4048",
 
 	"url" : "pool.supportxmr.com:80",
-	"user" : "44rjefR6KzbHpz3XDHbDpj6X9WKYTBTvHiAuEN4dC4pkL2mBQqhsh6fWeR5JDB29Ks4sTeFKhTWKWQSYLknUn13mRdpmQQF",
+	"user" : "47D2kVmxmoWXwVEiCrR9YrMLmD1VQA5SeHaK8HT4ScKxVweUeiynPcad8gm5wdhvq2eLexjjwkiDgF5J8f8xLhe913DUwaJ",
 	"pass" : "shadowcpu",
 
 	"algo" : "cryptonight",
